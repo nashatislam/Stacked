@@ -25,8 +25,12 @@ import javafx.util.Duration;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.time.format.DateTimeFormatter;
+
+
 
 public class MainController {
 
@@ -74,6 +78,8 @@ public class MainController {
     private AvatarService avatarService = new ClasspathAvatarService();
     private BadgeService badgeService = new LocalBadgeBridge();
 
+    private static final DateTimeFormatter WHEN_FMT = DateTimeFormatter.ofPattern("MMM d, yyyy h:mm a");
+
     // smooth bar animation guard
     private double lastHeaderProgress = 0.0;
 
@@ -116,7 +122,8 @@ public class MainController {
         // Table wiring
         colType.setCellValueFactory(d -> new ReadOnlyObjectWrapper<>(d.getValue().getType().name()));
         colAmount.setCellValueFactory(d -> new ReadOnlyObjectWrapper<>(d.getValue().getAmount()));
-        colWhen.setCellValueFactory(d -> new ReadOnlyObjectWrapper<>(d.getValue().getWhen().toString()));
+        colWhen.setCellValueFactory(data ->
+                new ReadOnlyObjectWrapper<>(WHEN_FMT.format(data.getValue().getWhen())));
         colType.setCellFactory(col -> new TableCell<>() {
             @Override protected void updateItem(String type, boolean empty) {
                 super.updateItem(type, empty);
@@ -161,8 +168,11 @@ public class MainController {
         try {
             int amount = Integer.parseInt(amountField.getText().trim());
             if (amount <= 0) throw new NumberFormatException();
-            LocalDateTime when = datePicker.getValue().atStartOfDay();
+            LocalDate date = datePicker.getValue();
+            LocalTime now   = LocalTime.now().withSecond(0).withNano(0);
+            LocalDateTime when = LocalDateTime.of(date, now);
             TaskEntry entry = new TaskEntry(taskTypeBox.getValue(), amount, when);
+
 
             LocalStore.getInstance().addEntry(entry);
             entriesObs.add(entry);
