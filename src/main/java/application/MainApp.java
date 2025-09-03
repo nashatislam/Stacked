@@ -1,4 +1,4 @@
-// src/main/java/application/MainApp.java
+
 package application;
 
 import application.theme.Responsive;
@@ -16,7 +16,7 @@ import java.util.Objects;
 
 public class MainApp extends Application {
 
-    /** Attach global styles to any scene (idempotent). */
+
     private static void applyTheme(Scene scene) {
         URL appCss = MainApp.class.getResource("/application/theme/app.css");
         if (appCss != null) {
