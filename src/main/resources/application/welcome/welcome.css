@@ -1,0 +1,15 @@
+/* Load the Helvetica Neue Medium font */
+
+.root, .welcome-root { 
+    -fx-font-family: "Century Gothic";
+      -fx-font-weight: bold;
+}
+.welcome-root { -fx-background-color: white; }
+.card {
+    -fx-background-color: white;
+    -fx-background-radius: 24;
+    -fx-border-radius: 24;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.18), 28, 0.2, 0, 6);
+}
+.subtitle { -fx-text-fill: #333; }
+.tip { -fx-opacity: .75; -fx-font-size: 11px; }

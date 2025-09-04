@@ -1,0 +1,203 @@
+
+
+.root {
+  -fx-font-family: "Century Gothic";
+  -fx-font-weight: bold;
+  -fx-text-fill: #2a2139;
+  -fx-accent: #c284e0;                    /* accent */
+  -fx-focus-color: rgba(194,132,224,.85); /* focus ring */
+  -fx-faint-focus-color: rgba(194,132,224,.25);
+  -fx-background-color:
+      linear-gradient(to bottom, #ffffff 0%, #fbf8ff 100%);
+  -fx-padding: 16; /* consistent page margin */
+}
+
+/* Soft spacing helpers for container nodes that already exist */
+.hbox, .vbox, .flow-pane, .grid-pane {
+  -fx-spacing: 12;
+}
+
+/* ---------- Cards ---------- */
+.card, .titled-pane, .list-view, .table-view, .tab-pane-content {
+  -fx-background-color: white;
+  -fx-background-radius: 16;
+  -fx-border-radius: 16;
+  -fx-border-color: #efe6f8;
+  -fx-effect: dropshadow(gaussian, rgba(53,12,82,.12), 16, .35, 0, 6);
+}
+
+/* If using TitledPane for “CS Realms Map”, “Avatar”, etc. — make it cardy */
+.titled-pane {
+  -fx-border-color: transparent;
+  -fx-background-color: transparent;
+}
+.titled-pane > .title {
+  -fx-background-color: #f5eeff;
+  -fx-background-radius: 16 16 0 0;
+  -fx-padding: 12 14;
+  -fx-text-fill: #350c52;
+  -fx-font-size: 16px;
+  -fx-font-weight: 700;
+}
+.titled-pane > *.content {
+  -fx-background-color: white;
+  -fx-background-radius: 0 0 16 16;
+  -fx-border-color: #efe6f8;
+  -fx-border-radius: 0 0 16 16;
+  -fx-padding: 16;
+}
+
+/* ---------- Titles & text ---------- */
+.label.title   { -fx-font-size: 18px; -fx-font-weight: 800; -fx-text-fill: #350c52; }
+.label.section { -fx-font-size: 16px; -fx-font-weight: 700; -fx-text-fill: #350c52; }
+.label.body    { -fx-font-size: 14px; }
+
+/* ---------- Buttons ---------- */
+.button {
+  -fx-background-color: white;
+  -fx-text-fill: #350c52;
+  -fx-border-color: #e6d9f1;
+  -fx-border-radius: 12;
+  -fx-background-radius: 12;
+  -fx-padding: 8 14;
+  -fx-cursor: hand;
+}
+.button:hover  { -fx-border-color: #c284e0; -fx-background-color: #f7efff; }
+.button:pressed{ -fx-background-color: #edd9fb; }
+.button:default{
+  -fx-background-color: #350c52; -fx-text-fill: white; -fx-border-color: transparent;
+}
+
+.button.round { -fx-background-radius: 999; -fx-border-radius: 999; }
+.button.ghost {
+  -fx-background-color: transparent; -fx-border-color: #c284e0; -fx-text-fill: #350c52;
+}
+
+/* Floating Action (+) button look (apply .fab to your Add button) */
+.button.fab {
+  -fx-background-color: #350c52;
+  -fx-text-fill: white;
+  -fx-background-radius: 999; -fx-border-radius: 999;
+  -fx-padding: 10 14;
+  -fx-effect: dropshadow(gaussian, rgba(53,12,82,.35), 14, .4, 0, 4);
+}
+.button.fab:hover { -fx-background-color: #4a1671; }
+
+/* ---------- Inputs ---------- */
+.text-field, .text-area, .combo-box-base, .date-picker {
+  -fx-background-color: white;
+  -fx-background-radius: 12;
+  -fx-border-color: #e6d9f1;
+  -fx-border-radius: 12;
+  -fx-padding: 8 12;
+}
+.text-field:focused, .text-area:focused, .combo-box-base:focused, .date-picker:focused {
+  -fx-border-color: #c284e0;
+  -fx-effect: dropshadow(gaussian, rgba(194,132,224,.35), 10, .25, 0, 2);
+}
+
+/* Minimal combo arrow */
+.combo-box-base > .arrow-button > .arrow {
+  -fx-background-insets: 0;
+  -fx-shape: "M 0 0 L 6 6 L 12 0 Z";
+  -fx-background-color: #350c52;
+}
+
+/* ---------- Tabs: pill header with accent underline ---------- */
+.tab-pane { -fx-open-tab-animation: NONE; -fx-close-tab-animation: NONE; }
+.tab-pane:top > .tab-header-area { -fx-padding: 0 0 10 0; }
+.tab {
+  -fx-background-color: transparent;
+  -fx-background-radius: 999;
+  -fx-padding: 6 12;
+  -fx-text-base-color: #350c52;
+}
+.tab:selected {
+  -fx-background-color: #f2e9fb;
+  -fx-border-color: transparent transparent #c284e0 transparent;
+  -fx-border-width: 0 0 3 0;
+  -fx-background-radius: 999;
+}
+.tab .tab-label { -fx-font-weight: 600; }
+
+/* ---------- Progress bars: gradient accent ---------- */
+.progress-bar { -fx-background-radius: 8; }
+.progress-bar > .track { -fx-background-color: #f0e7fa; -fx-background-radius: 6; }
+.progress-bar > .bar {
+  -fx-background-insets: 0;
+  -fx-background-radius: 6;
+  -fx-background-color: linear-gradient(to right, #350c52, #c284e0);
+}
+
+/* ---------- Table: denser, zebra, rounded rows, soft dividers ---------- */
+.table-view {
+  -fx-background-radius: 16;
+  -fx-border-radius: 16;
+  -fx-background-color: white;
+  -fx-border-color: #efe6f8;
+}
+.table-view .column-header-background {
+  -fx-background-color: #f6f0fb;
+  -fx-background-radius: 16 16 0 0;
+}
+.table-view .column-header, .table-view .filler { -fx-background-color: transparent; }
+.table-view .table-row-cell {
+  -fx-background-radius: 8; -fx-padding: 4 6;
+}
+.table-view .table-row-cell:odd { -fx-background-color: #fcfaff; }
+.table-view .table-row-cell:selected { -fx-background-color: rgba(194,132,224,.20); }
+.table-view .virtual-flow .corner, .table-view .show-hide-columns-button { -fx-background-color: transparent; }
+
+/* ---------- Tooltips ---------- */
+.tooltip {
+  -fx-background-color: #350c52; -fx-text-fill: white;
+  -fx-background-radius: 10; -fx-padding: 8 10;
+}
+
+/* ---------- Avatar Card ---------- */
+.avatar-card {
+  -fx-background-color:
+      linear-gradient(to bottom right, rgba(194,132,224,.25), rgba(53,12,82,.15)),
+      white;
+  -fx-background-radius: 16;
+  -fx-border-radius: 16;
+  -fx-border-color: #efe6f8;
+  -fx-padding: 18;
+  -fx-effect: dropshadow(gaussian, rgba(53,12,82,.18), 18, .35, 0, 8);
+}
+.level-badge {
+  -fx-background-color: #350c52; -fx-text-fill: white;
+  -fx-background-radius: 999; -fx-padding: 2 8;
+  -fx-font-weight: 800;
+  -fx-effect: dropshadow(gaussian, rgba(0,0,0,.25), 6, .4, 0, 2);
+}
+/* ───────── Tab header background (replace grey with accent tint) ───────── */
+.pill-tabs > .tab-header-area > .tab-header-background {
+    /* soft accent gradient instead of Modena grey */
+    -fx-background-color: linear-gradient(
+        to right,
+        rgba(53, 12, 82, 0.10),   /* #350c52 @10% */
+        rgba(194, 132, 224, 0.12) /* #c284e0 @12% */
+    );
+    -fx-background-insets: 0;
+    -fx-background-radius: 10;   /* matches pill feel */
+}
+
+/* subtle bottom border in accent (optional, looks cleaner) */
+.pill-tabs > .tab-header-area {
+    -fx-border-color: rgba(53, 12, 82, 0.20);
+    -fx-border-width: 0 0 1 0;
+    -fx-background-color: transparent; /* ensure only our gradient shows */
+}
+
+/* active tab underline color (keeps cohesion) */
+.pill-tabs .tab:selected {
+    -fx-border-color: transparent transparent #c284e0 transparent;
+    -fx-border-width: 0 0 2px 0;
+}
+
+/* hover for tabs (optional) */
+.pill-tabs .tab:hover {
+    -fx-background-color: rgba(194, 132, 224, 0.10);
+    -fx-background-radius: 16;
+}

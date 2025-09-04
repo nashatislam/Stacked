@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="application.hub.HubController">
+    <top>
+        <ToolBar>
+            <Label text="Stacked" styleClass="title"/>
+            <Pane HBox.hgrow="ALWAYS"/>
+            <Label fx:id="hiLabel" text="Hi"/>
+            <Separator orientation="VERTICAL"/>
+            <Label fx:id="levelPill" text="Level" styleClass="pill"/>
+            <Label text="🔥"/>
+        </ToolBar>
+    </top>
+    <center>
+        <ScrollPane fitToWidth="true">
+            <content>
+                <FlowPane fx:id="cardsPane"/>
+            </content>
+        </ScrollPane>
+    </center>
+    <right>
+        <VBox spacing="10" fx:id="rightPanel" prefWidth="260">
+            <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+            <TitledPane text="Today">
+                <content>
+                    <VBox spacing="8">
+                        <Label text="Streak: 🔥 x1.00"/>
+                        <Label text="XP today: 0"/>
+                    </VBox>
+                </content>
+            </TitledPane>
+            <TitledPane text="Quick actions" expanded="true">
+                <content>
+                    <HBox spacing="8">
+                        <Button fx:id="quickStudyBtn" text="Study 25m" styleClass="btn-primary"/>
+                        <Button fx:id="quickHydrateBtn" text="Hydrate" styleClass="btn-secondary"/>
+                        <Button fx:id="quickBreakBtn" text="Break" styleClass="btn-secondary"/>
+                    </HBox>
+                </content>
+            </TitledPane>
+        </VBox>
+    </right>
+</BorderPane>
+
+

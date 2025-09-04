@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="application.MainController"
+            styleClass="app-root">
+
+    <!-- Header: title row + XP strip (uses headerXpBar/headerXpLabel) -->
+    <top>
+        <VBox spacing="6">
+            <HBox spacing="8" styleClass="app-header" BorderPane.alignment="CENTER_LEFT">
+                <Label text="Stacked" styleClass="app-title"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label text="User:"/>
+                <Label fx:id="usernameLabel"/>
+                <Separator orientation="VERTICAL"/>
+                <Label fx:id="levelLabel"/>
+            </HBox>
+
+            <HBox spacing="8" alignment="CENTER_LEFT" styleClass="xp-strip">
+                <padding><Insets top="0" right="12" bottom="6" left="12"/></padding>
+                <ProgressBar fx:id="headerXpBar" prefWidth="420"/>
+                <Label fx:id="headerXpLabel" text="0/0 XP"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE" styleClass="pill-tabs">
+
+            <Tab text="Task Logging">
+                <content>
+                    <BorderPane>
+                        <center>
+                            <GridPane hgap="24" vgap="16">
+                                <columnConstraints>
+                                    <ColumnConstraints percentWidth="38"/>
+                                    <ColumnConstraints percentWidth="62" hgrow="ALWAYS"/>
+                                </columnConstraints>
+
+                                <!-- LEFT COLUMN -->
+                                <ScrollPane GridPane.columnIndex="0"
+                                            fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED">
+                                    <content>
+                                        <VBox spacing="16" fillWidth="true">
+                                            <TitledPane text="CS Realms Map" expanded="true" animated="false" styleClass="card">
+                                                <content>
+                                                    <VBox spacing="14" fillWidth="true">
+                                                        <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+
+                                                        <!-- Realms grid stays as-is -->
+                                                        <FlowPane fx:id="realmsPane" hgap="12" vgap="12"/>
+
+                                                        <!-- NEW: map opening part RIGHT BENEATH the realms grid -->
+                                                        <HBox spacing="8" alignment="CENTER_LEFT" styleClass="toolbar">
+                                                            <Separator orientation="VERTICAL" visible="false"/> <!-- spacer, optional -->
+                                                            <Label text="Realm:"/>
+                                                            <ComboBox fx:id="realmPickSide" prefWidth="180"/>
+                                                            <Button fx:id="openMapBtnSide" text="Open Map" styleClass="btn btn-secondary"/>
+                                                            <Region HBox.hgrow="ALWAYS"/>
+                                                        </HBox>
+                                                    </VBox>
+                                                </content>
+                                            </TitledPane>
+
+                                            <TitledPane text="Avatar" expanded="true" animated="false" styleClass="card">
+                                                <content>
+                                                    <VBox fx:id="avatarBox" spacing="12" fillWidth="true">
+                                                        <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+                                                    </VBox>
+                                                </content>
+                                            </TitledPane>
+                                        </VBox>
+                                    </content>
+                                </ScrollPane>
+
+                                <!-- RIGHT COLUMN -->
+                                <VBox GridPane.columnIndex="1" spacing="16" fillWidth="true">
+                                    <!-- Kept this toolbar UNTOUCHED (still includes realm pick + open map + task controls) -->
+                                    <HBox spacing="12" alignment="CENTER_LEFT" styleClass="toolbar">
+                                        <padding><Insets top="4" right="4" bottom="4" left="4"/></padding>
+
+
+
+                                        <Label text="Task:"/>
+                                        <ComboBox fx:id="taskTypeBox" prefWidth="160"/>
+                                        <Label text="Amount"/>
+                                        <TextField fx:id="amountField" prefWidth="80"/>
+                                        <Label text="Date"/>
+                                        <DatePicker fx:id="datePicker"/>
+                                        <Button fx:id="addBtn" text="+" styleClass="fab"/>
+                                        <Region HBox.hgrow="ALWAYS"/>
+                                    </HBox>
+
+                                    <TitledPane text="Activity History" expanded="true" animated="false"
+                                                styleClass="card" VBox.vgrow="ALWAYS">
+                                        <content>
+                                            <VBox spacing="8" fillWidth="true">
+                                                <padding><Insets top="8" right="8" bottom="8" left="8"/></padding>
+                                                <TableView fx:id="historyTable" VBox.vgrow="ALWAYS">
+                                                    <columns>
+                                                        <TableColumn fx:id="colType" text="Type" prefWidth="140"/>
+                                                        <TableColumn fx:id="colAmount" text="Amount" prefWidth="100"/>
+                                                        <TableColumn fx:id="colWhen" text="When"/>
+                                                    </columns>
+                                                </TableView>
+                                            </VBox>
+                                        </content>
+                                    </TitledPane>
+                                </VBox>
+                            </GridPane>
+                        </center>
+                    </BorderPane>
+                </content>
+            </Tab>
+
+            <Tab text="Stats" closable="false">
+                <content>
+                    <VBox spacing="10">
+                        <padding><Insets topRightBottomLeft="16"/></padding>
+
+                        <Label text="Overall Progress"/>
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="Level Progress:"/>
+                            <!-- Stats tab has its own bar/label -->
+                            <ProgressBar fx:id="statsXpBar" prefWidth="300"/>
+                            <Label fx:id="statsXpLabel" text="0/100 XP"/>
+                        </HBox>
+
+                        <Separator/>
+
+                        <HBox spacing="16" alignment="CENTER_LEFT">
+                            <Label text="Streak:"/>
+                            <Label fx:id="streakDaysLabel" text="Days: 0"/>
+                            <Label fx:id="streakMultiplierLabel" text="Multiplier: x1.00"/>
+                            <Label fx:id="streakNextLabel" text="Next Milestone: —"/>
+                        </HBox>
+
+                        <Label text="Realm Breakdown (see left)"/>
+                        <Label text="Tip: Earn XP by logging actions – study, hydrate, and take smart breaks."/>
+                    </VBox>
+                </content>
+            </Tab>
+
+            <Tab text="Badges">
+                <content>
+                    <BorderPane>
+                        <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+                        <center><ListView fx:id="badgesList"/></center>
+                    </BorderPane>
+                </content>
+            </Tab>
+
+        </TabPane>
+    </center>
+</BorderPane>

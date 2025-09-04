@@ -1,0 +1,34 @@
+
+.map-root {
+-fx-font-family: "Century Gothic";
+  -fx-font-weight: bold;
+    -fx-background-color: radial-gradient(center 50% 50%, radius 140%,
+        #0b1530 0%, #0e1a3a 65%, #0a1228 100%);
+}
+
+/* Node coin */
+.node-coin { -fx-padding: 0; }
+.node-coin:focused {
+    -fx-effect: dropshadow(gaussian, rgba(109,40,217,0.65), 12, 0.25, 0, 0),
+                dropshadow(gaussian, white, 3, 0.9, 0, 0);
+}
+
+/* States you already use */
+.node-locked  { -fx-opacity: 0.55; }
+.node-next    { -fx-opacity: 0.95; }
+.node-unlocked{ -fx-opacity: 1.0; }
+.node-claimed { -fx-opacity: 1.0; }
+
+
+/* Label pill */
+.node-label {
+    -fx-background-color: rgba(17,24,39,0.92);
+    -fx-text-fill: white;
+    -fx-padding: 4 8;
+    -fx-background-radius: 999;
+    -fx-font-size: 12px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 10, 0.4, 0, 2);
+}
+
+/* Optional: keep map toolbar text readable on dark bg */
+.tool-bar .label { -fx-text-fill: -fx-text-base-color; }

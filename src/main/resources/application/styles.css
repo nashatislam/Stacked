@@ -1,0 +1,5 @@
+.title { -fx-font-size: 20px; -fx-font-weight: bold; }
+.realm-bar { -fx-background-color: rgba(0,0,0,0.05); -fx-background-radius: 12; }
+.avatar { -fx-font-size: 26px; }
+.root { -fx-font-size: 14px; }
+.progress-bar:determinate > .bar { -fx-background-insets: 0; }

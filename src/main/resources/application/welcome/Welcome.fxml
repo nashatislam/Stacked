@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<!-- IMPORTANT: This file must start exactly at the XML declaration above (no blank lines/characters). -->
+
+<BorderPane styleClass="welcome-root" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.welcome.WelcomeController">
+    <center>
+        <StackPane alignment="CENTER">
+            <VBox alignment="CENTER" spacing="18" styleClass="card">
+                <padding><Insets bottom="28" left="32" right="32" top="28" /></padding>
+
+
+                <!-- Logo -->
+                <ImageView fitHeight="147.0" fitWidth="226.0" preserveRatio="true">
+                    <image>
+                        <Image url="@welcome.png" />
+                    </image>
+                </ImageView>
+
+
+                <Label styleClass="subtitle" text="CS habits, gamified. Log study, hydrate, and level up your realms." wrapText="true" />
+
+
+                <GridPane alignment="CENTER" hgap="12" maxWidth="165.0" prefHeight="26.0" prefWidth="165.0" vgap="10">
+                    <columnConstraints>
+                        <ColumnConstraints halignment="RIGHT" minWidth="80" />
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="280" />
+                    </columnConstraints>
+                    <children>
+                        <Label text="Name" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <TextField fx:id="nameField" maxWidth="165.0" prefHeight="26.0" prefWidth="165.0" promptText="your name" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    </children>
+                    <rowConstraints>
+                        <RowConstraints />
+                    </rowConstraints>
+                    <VBox.margin>
+                        <Insets left="80.0" />
+                    </VBox.margin>
+                </GridPane>
+
+
+                <HBox alignment="CENTER" spacing="12">
+                    <Button fx:id="enterBtn" prefHeight="26.0" prefWidth="74.0" style="-fx-background-radius: 30; -fx-background-color: #4c096e; -fx-text-fill: white;" styleClass="primary" text="Enter" />
+
+                </HBox>
+
+
+
+            </VBox>
+        </StackPane>
+    </center>
+</BorderPane>
