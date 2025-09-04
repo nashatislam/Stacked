@@ -2,10 +2,7 @@ package application;
 
 import java.time.LocalDate;
 
-/**
- * Day-based streaks with deterministic rules and multiplier schedule.
- * Persisted via LocalStore/SaveData.
- */
+
 public final class StreakService {
     private static final StreakService INSTANCE = new StreakService();
     private StreakService() { }
@@ -24,10 +21,10 @@ public final class StreakService {
             return;
         }
         if (day.isBefore(last)) {
-            return; // ignore backdated logs to prevent retroactive streak changes
+            return;
         }
         if (day.isEqual(last)) {
-            return; // multiple logs same day: unchanged
+            return;
         }
         if (day.isEqual(last.plusDays(1))) {
             store.setStreak(day, days + 1);
@@ -50,10 +47,7 @@ public final class StreakService {
         return Math.min(1.20, m);
     }
 
-    /**
-     * Next calendar date when a new multiplier tier would be reached if activity continues daily.
-     * For streak >=14, returns tomorrow (maintain tier).
-     */
+
     public LocalDate getNextMilestoneDate() {
         LocalDate last = LocalStore.getInstance().lastActiveDate();
         int d = getStreakDays();

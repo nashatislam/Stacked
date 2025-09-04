@@ -6,11 +6,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Per-realm assets + many nodes laid out in multiple parallel zig-zag lanes.
- * Guaranteed vertical spacing between lanes so markers don't overlap.
- * Nodes use normalized coordinates (0..1) and carry thresholds + resource URLs.
- */
+
 public class ClasspathRealmLayoutBridge implements RealmLayoutService {
 
     @Override
@@ -36,21 +32,19 @@ public class ClasspathRealmLayoutBridge implements RealmLayoutService {
 
     private URL find(String path) { return getClass().getResource(path); }
 
-    /* ─────────────────────── Geometry helpers (no overlap) ─────────────────────── */
+
 
     private record Pt(double x, double y) {}
 
-    // Approx min normalized separation between two lane centers (≈ coin ~50–60px)
+
     private static final double MIN_DY = 0.12;     // vertical: keep lanes apart
     private static final double SAFE_TOP = 0.10;   // keep inside island
     private static final double SAFE_BOTTOM = 0.90;
     private static final double SAFE_LEFT = 0.12;
     private static final double SAFE_RIGHT = 0.88;
 
-    /**
-     * Build "lanes" (horizontal bands) centered around yCenter, with at least MIN_DY
-     * separation, clamped safely inside the island silhouette.
-     */
+
+
     private double[] makeBandsSpaced(int lanes, double yCenter) {
         double minSpan = (lanes - 1) * MIN_DY + 0.02;          // add tiny margin
         double span = Math.max(minSpan, 0.42);                 // ensure roomy by default
@@ -65,18 +59,14 @@ public class ClasspathRealmLayoutBridge implements RealmLayoutService {
         return b;
     }
 
-    /**
-     * Produce N points across several columns and lanes.
-     * Order is serpentine: col0 top→bottom, col1 bottom→top, …
-     * Small per-lane horizontal offsets prevent intra-column stacking.
-     */
+
     private List<Pt> multiLaneSerpentine(int n, int lanes, double yCenter) {
         double[] bands = makeBandsSpaced(lanes, yCenter);
 
         int cols = Math.max(2, (int) Math.ceil(n / (double) lanes));
         double dx = (SAFE_RIGHT - SAFE_LEFT) / Math.max(1, cols - 1);
 
-        // Per-lane x offset to keep coins in the same column from sharing x exactly
+
         double laneXOffset = Math.min(0.018, dx * 0.28);
 
         List<Pt> out = new ArrayList<>(n);
@@ -106,7 +96,7 @@ public class ClasspathRealmLayoutBridge implements RealmLayoutService {
         return Math.max(lo, Math.min(hi, v));
     }
 
-    /** Convert (title,url) items into NodeSpecs laid out by the serpentine. */
+
     private List<NodeSpec> makeNodes(String idPrefix, String[][] items, int lanes, double yCenter, int xpStep) {
         int n = items.length;
         List<Pt> pts = multiLaneSerpentine(n, lanes, yCenter);

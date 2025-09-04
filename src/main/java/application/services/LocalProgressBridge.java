@@ -7,7 +7,7 @@ import application.XpService;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Trivial bridge that reads progress from LocalStore/Profile. */
+
 public class LocalProgressBridge implements ProgressService {
     @Override public int getTotalXp() {
         return LocalStore.getInstance().profile().getTotalXp();

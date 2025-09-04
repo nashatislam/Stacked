@@ -1,4 +1,4 @@
-// file: src/main/java/application/services/LocalBadgeBridge.java
+
 package application.services;
 
 import application.*;

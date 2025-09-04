@@ -177,7 +177,7 @@ public class MainController {
             LocalStore.getInstance().addEntry(entry);
             entriesObs.add(entry);
 
-            // award XP and (now) evaluate all badges centrally
+
             xpService.applyEntry(entry);
             badgeService.evaluateAll();
 

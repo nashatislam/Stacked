@@ -9,7 +9,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
-/** Coin marker with centered node.png that fills the circle. */
+
 public final class NodeCoin extends StackPane {
     private static final double DIAMETER    = 56.0;  // visual size
     private static final double RING_STROKE = 3.0;
@@ -23,16 +23,16 @@ public final class NodeCoin extends StackPane {
         setFocusTraversable(true);
         setPickOnBounds(false);
 
-        // Base (white) + subtle shadow
+
         base.setFill(Color.web("#ffffff"));
         base.setEffect(new DropShadow(8, Color.color(0,0,0,0.25)));
 
-        // Purple ring
+
         ring.setFill(Color.TRANSPARENT);
         ring.setStroke(Color.web("#6D28D9"));
         ring.setStrokeWidth(RING_STROKE);
 
-        // The green X image
+
         glyph = new ImageView(glyphImage);
         glyph.setPreserveRatio(true);
         glyph.setSmooth(true);
@@ -53,16 +53,15 @@ public final class NodeCoin extends StackPane {
         double d  = Math.min(getWidth(), getHeight());   // coin diameter on screen
         double cx = d / 2.0, cy = d / 2.0;
 
-        // Ring sits just outside the base
+
         ring.setRadius((d - RING_STROKE) / 2.0);
         ring.setCenterX(cx); ring.setCenterY(cy);
 
-        // Inset base so ring is visible
+
         base.setRadius(ring.getRadius() - 3);
         base.setCenterX(cx); base.setCenterY(cy);
 
-        // Fit node.png to (almost) the full base circle.
-        // Leave a tiny inset so anti-aliasing doesn't clip.
+
         double baseDiameter = base.getRadius() * 2.0;
         double inset        = Math.max(2.0, d * 0.02);      // ~2% or at least 2px
         double glyphSize    = Math.max(0, baseDiameter - inset * 2);

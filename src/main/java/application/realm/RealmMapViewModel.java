@@ -5,7 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.net.URL;
 
-/** Minimal VM if you want to inject/test independently. */
+
 public class RealmMapViewModel {
     public static final class NodeVM {
         private final StringProperty id = new SimpleStringProperty();

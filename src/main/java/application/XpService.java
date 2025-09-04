@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class XpService {
-    // Why: Deterministic, non-linear progression curve; cap gameplay at level 10.
+
     public static final int MAX_LEVEL = 10;
     public static final int[] LEVEL_THRESHOLDS = new int[]{
             0, 100, 250, 450, 700, 1000, 1400, 1850, 2350, 2900

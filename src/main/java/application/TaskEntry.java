@@ -4,9 +4,9 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class TaskEntry {
-    private String id; // unique for idempotent awards
+    private String id;
     private TaskType type;
-    private int amount; // minutes or ml
+    private int amount;
     private LocalDateTime when;
 
     public TaskEntry() { /* for Gson */ }

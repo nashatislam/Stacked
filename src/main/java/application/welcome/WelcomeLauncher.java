@@ -1,4 +1,4 @@
-// src/main/java/application/welcome/WelcomeLauncher.java
+
 package application.welcome;
 
 import application.LocalStore;

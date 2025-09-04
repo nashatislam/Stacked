@@ -121,33 +121,32 @@ public class RealmMapController {
         mapRoot.widthProperty().addListener(relayout);
         mapRoot.heightProperty().addListener(relayout);
 
-        // When the ImageView's laid-out bounds change (includes first layout and letterboxing),
         // recompute using the actual displayed rectangle.
         mapView.boundsInParentProperty().addListener((o, a, b) -> {
             layoutNodes();
             paintPath();
         });
 
-        // When the root gets a Scene, run once after first layout pass (fixes "starts in corner until resize").
+        //When the root gets a Scene, run once after first layout pass (fixes "starts in corner until resize").
         mapRoot.sceneProperty().addListener((obs, oldScene, newScene) -> {
             if (newScene != null) {
                 Platform.runLater(() -> {
                     layoutNodes();
                     paintBackground();
                     paintPath();
-                    refreshNodeStatesByXp(); // ensure styles reflect current XP on first show
+                    refreshNodeStatesByXp(); //ensure styles reflect current XP on first show
                 });
             }
         });
 
-        // Also react when layout bounds change (Tab collapse/expand, split pane drag, etc.)
+        // Also react when layout bounds change
         mapRoot.layoutBoundsProperty().addListener((o, a, b) -> {
             layoutNodes();
             paintPath();
             paintBackground();
         });
 
-        // If the image itself is swapped/loaded later, relayout.
+
         mapView.imageProperty().addListener((obs, old, img) -> {
             layoutNodes();
             paintPath();
@@ -185,7 +184,7 @@ public class RealmMapController {
             coin.setAccessibleRole(AccessibleRole.BUTTON);
             coin.setAccessibleText(spec.title());
 
-            // OPEN on click / keyboard
+
             NodeHolder holder = new NodeHolder(spec.id(), spec.x(), spec.y(), coin, spec);
             coin.setOnMouseClicked(e -> onActivate(holder));
             coin.setOnKeyPressed(e -> {
@@ -195,7 +194,7 @@ public class RealmMapController {
             if (spec.title() != null)
                 Tooltip.install(coin, new Tooltip(spec.title() + (spec.tooltip()!=null? "\n" + spec.tooltip() : "")));
 
-            // Label pill (hover/focus)
+
             Label pill = new Label(spec.title() + (spec.tooltip()!=null? " – " + spec.tooltip() : ""));
             pill.getStyleClass().add("node-label");
             pill.setManaged(false);
@@ -209,7 +208,7 @@ public class RealmMapController {
             nodeHolders.add(holder);
         }
 
-        // Initial pass (in case everything is already laid out)
+
         Platform.runLater(() -> {
             layoutNodes();
             paintBackground();

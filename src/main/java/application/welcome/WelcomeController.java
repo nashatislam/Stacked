@@ -1,4 +1,4 @@
-// file: src/main/java/application/welcome/WelcomeController.java
+
 package application.welcome;
 
 import application.LocalStore;

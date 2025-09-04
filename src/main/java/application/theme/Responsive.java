@@ -4,11 +4,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 
-/**
- * Simple responsive helper: scales the root font size based on the
- * current Scene size. All controls that use em-based metrics will
- * grow/shrink consistently, and text remains readable on big screens.
- */
+
 public final class Responsive {
     private Responsive() {}
 
@@ -37,7 +33,7 @@ public final class Responsive {
         double k  = Math.min(kx, ky); // keep aspect
         double px = clamp(BASE_FONT * k, MIN_FONT, MAX_FONT);
 
-        // Set once per change; everything under root inherits this size.
+
         root.setStyle(String.format("-fx-font-size: %.2fpx;", px));
     }
 

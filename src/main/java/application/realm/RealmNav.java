@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 
-/** Small, UI-only navigator for opening the Realm Map from anywhere in the app. */
+
 public final class RealmNav {
 
     private RealmNav() { }
@@ -30,7 +30,7 @@ public final class RealmNav {
             RealmMapController controller = fx.getController();
             RealmLayoutService layout = new ClasspathRealmLayoutBridge();
 
-            // Back goes to main.fxml
+
             RealmMapController.NavDelegate back = () -> {
                 try {
                     var mainUrl = Objects.requireNonNull(

@@ -1,4 +1,4 @@
-// src/main/java/application/welcome/Navigation.java
+
 package application.welcome;
 
 import application.MainController;
@@ -38,7 +38,7 @@ public class Navigation implements RealmMapController.NavDelegate {
             scene.setRoot(root);
         }
 
-        // keep screen maximized on every screen we show
+        //keep screen maximized on every screen we show
         var b = Screen.getPrimary().getVisualBounds();
         stage.setX(b.getMinX());
         stage.setY(b.getMinY());
@@ -46,7 +46,7 @@ public class Navigation implements RealmMapController.NavDelegate {
         stage.setHeight(b.getHeight());
         stage.setMaximized(true);
 
-        // re-attach responsive scaling after root replacement
+        //re-attach responsive scaling after root replacement
         Responsive.attach(scene);
         return scene;
     }
