@@ -90,12 +90,10 @@ mvn javafx:run
 
 ## 📸 Screenshots
 
-(Add screenshots here)  
-Example:
 ```markdown
 ![Main Screen](assets/screenshots/main.png)
 ![Realm Map](assets/screenshots/map.png)
-![Badges](assets/screenshots/badge.png)
+![Badges](assets/screenshots/badges.png)
 ```
 
 ---
