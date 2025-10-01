@@ -90,11 +90,12 @@ mvn javafx:run
 
 ## 📸 Screenshots
 
-```markdown
 ![Main Screen](assets/screenshots/main.png)
-![Realm Map](assets/screenshots/map.png)
-![Badges](https://github.com/nashatislam/Stacked/blob/74ca2705eae48946a2b115a215429e487e646789/assets/screenshots/badges.png)
-```
+
+![Realm Map](assets/screenshots/realm.png)
+
+![Badges](assets/screenshots/badges.png)
+
 
 ---
 
